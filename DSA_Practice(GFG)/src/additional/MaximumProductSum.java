@@ -1,4 +1,4 @@
-package additional;
+package additional;import javax.naming.spi.DirStateFactory.Result;
 
 public class MaximumProductSum {
 	
@@ -12,17 +12,16 @@ public class MaximumProductSum {
 		for(int i=1; i<array.length; i++)maxSum += array[i];
 		for(int i=0; i<array.length; i++)maxProd += array[i]*i;
 		
-
-		System.out.println(maxProd+" "+maxSum);
+		int result = Integer.MIN_VALUE;
+		result = Math.max(maxProd, result);
 		
 		for(int i=1; i<array.length; i++) {
 			maxProd = maxProd - maxSum + (array[i-1]*(array.length-1));
 			maxSum = maxSum - array[i]+array[i-1];
+			result = Math.max(maxProd, result);
 			
-			System.out.println(maxProd+" "+maxSum);
 		}
-		
-		return 0;
+		return result;
 	}
 	
 	
