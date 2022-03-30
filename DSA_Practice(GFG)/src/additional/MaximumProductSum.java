@@ -1,6 +1,4 @@
-package additional;import javax.naming.spi.DirStateFactory.Result;
-
-public class MaximumProductSum {
+package additional; public class MaximumProductSum {
 	
 	
 	
