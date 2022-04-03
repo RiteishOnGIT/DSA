@@ -30,6 +30,7 @@ public class MinimumsTepTo1 {
 	
 	
 	public static void main(String[] args) {
+		dp = new int[100000];
 		for(int i=0; i<10001; i++)dp[i] = -1;
 		System.out.println(minSteps(9999));
 	}

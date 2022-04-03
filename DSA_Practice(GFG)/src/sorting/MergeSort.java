@@ -23,14 +23,15 @@ public class MergeSort {
 	
 	
 	public static int [] mergeDriver(int array[]) {
-		return mergeSort(array, 0, array.length);
+		return mergeSort(array, 0, array.length-1);
 	}
 	
 	
 	
 	public static void main(String[] args) {
-		int array[] = {5, 10, 8, 20, 18, 2};
+		int array[] = {5, 20, 18 ,1, 2, 3, 4, 12, 2121, 213 ,3};
 		System.out.println(mergeDriver(array));
+		for(int i=0; i<array.length; i++)System.out.println(array[i]);
 
 	}
 
