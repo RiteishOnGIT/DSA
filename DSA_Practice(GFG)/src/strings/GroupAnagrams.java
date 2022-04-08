@@ -1,7 +1,9 @@
 package strings;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class GroupAnagrams {
 	
@@ -13,28 +15,45 @@ public class GroupAnagrams {
 	public static void groupAnagrams(String[] anagrams) {
 		
 		List<List<String>>resuList = new ArrayList<List<String>>();
-		
+		HashMap<Character, Integer> checkHashMap = new HashMap<Character, Integer>();
+		HashMap<Character, Integer> checkHashMap1 = new HashMap<Character, Integer>();
 		for(int i=0; i<anagrams.length; i++) {
-			int check[] = new int[26];
-			boolean flag = false;
-			String s1 = anagrams[i];
-			List<String>anagramList = new ArrayList<String>();
+			String s1 = anagrams[i]; 
 			if(s1.compareTo("A") == 0)continue;
+			checkHashMap.clear();
+			boolean flag = false;
+			List<String>anagramList = new ArrayList<String>();
 			anagramList.add(s1);
-			for(int l=0; l<s1.length(); l++)check[s1.charAt(l)- 'a']++;
+			for(int l=0; l<s1.length(); l++) {
+				if(checkHashMap.containsKey(s1.charAt(l))) {
+					checkHashMap.put(s1.charAt(l), checkHashMap.get(s1.charAt(l))+1);
+				}
+				else {
+
+					checkHashMap.put(s1.charAt(l), 1);
+				}
+			}
 			for(int j=i+1; j<anagrams.length; j++) {
 				String s2 = anagrams[j];
-				if(s2.compareTo("A") == 0)continue;
+				if(s2.compareTo("A") == 0 || s1.length() != s2.length())continue;
+				checkHashMap1.clear();
 				flag = false;
-				int check1[] = new int[26];
-				for(int x =0; x<s2.length(); x++)check1[s2.charAt(x)- 'a']++;
-				
-				for(int x=0; x<26; x++) {
-					if(check[x] !=check1[x]) {
+				for(int l=0; l<s2.length(); l++) {
+					if(checkHashMap1.containsKey(s2.charAt(l))) {
+						checkHashMap1.put(s2.charAt(l), checkHashMap1.get(s2.charAt(l))+1);
+					}
+					else {
+						checkHashMap1.put(s2.charAt(l), 1);
+					}
+				}
+				for(Entry<Character, Integer> e: checkHashMap.entrySet()) {
+					if(checkHashMap.get(e.getKey()) != checkHashMap1.get(e.getKey())) {
 						flag = true;
 						break;
 					}
 				}
+				
+				
 				if(flag ==false) {
 					anagramList.add(s2);
 					anagrams[j] = "A";
@@ -52,7 +71,7 @@ public class GroupAnagrams {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String[] anagramStrings = {"", "aa", "", "aa", "a", ""};
+		String[] anagramStrings = {"", "aa", "a", "aa", "", "a", ""};
 		
 		groupAnagrams(anagramStrings);
 	}
