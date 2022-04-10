@@ -3,8 +3,9 @@ package sorting;
 public class MergeFunction {
 
 	
-	public static int[] mergeTwoArrays(int [] array, int low, int mid, int high) {
-		if(low == array.length-1)return array;
+	public static int mergeTwoArrays(int [] array, int low, int mid, int high) {
+		int inversions = 0;
+		if(low == array.length-1)return 0;
 		int left[] = new int[mid -low+1];
 		int right[] = new int[high-mid];
 		int k = 0;
@@ -19,8 +20,13 @@ public class MergeFunction {
 		i=0;
 		int j =0;
 		while(i < left.length && j < right.length) {
-			if(left[i] < right[j])temp[k++] = left[i++];
-			else temp[k++] = right[j++];
+			if(left[i] <= right[j]) {
+				temp[k++] = left[i++];
+			}
+			else {
+				temp[k++] = right[j++];
+				inversions += left.length - i;
+			}
 		}
 		
 		while(i < left.length)temp[k++] = left[i++];
@@ -29,14 +35,14 @@ public class MergeFunction {
 		while(a <= b) {
 			array[a++] = temp[i++];
 		}
-		return array;
+		return inversions;
 	}
 	
 	public static void main(String[] args) {
 		
-		int array[] = {1, 5};
+		int array[] = {2, 3, 4, 10 ,10, 10};
 		
-		array = mergeTwoArrays(array, 0, ((array.length)/2), array.length);
+		System.out.println(mergeTwoArrays(array, 0, ((array.length)/2)-1, array.length-1));
 		for(int i=0; i<array.length; i++) {
 			System.out.println(array[i]);
 		}

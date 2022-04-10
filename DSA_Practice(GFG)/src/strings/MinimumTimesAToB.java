@@ -23,7 +23,7 @@ public class MinimumTimesAToB {
 		
 		String a = "qwq";
 		String b = "qwqwqwqwqwqwqwqw";
-		
+		numberOfTimes(a, b);
 		System.out.println(Integer.MIN_VALUE);
 	}
 

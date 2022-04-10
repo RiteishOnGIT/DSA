@@ -14,9 +14,11 @@ public class LevelOrrderTraversal {
 		int level = 0;
 		queue.add(root);
 		int size = 1;
+		@SuppressWarnings("unused")
 		int sum = Integer.MIN_VALUE;
 		while(queue.isEmpty() == false) {
 			size = queue.size();
+			@SuppressWarnings("unused")
 			int innerSum =  0;
 			while(size != 0) {
 				Node temp  = queue.poll();

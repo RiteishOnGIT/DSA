@@ -6,7 +6,7 @@ public class TripletSum {
 	
 	public static boolean findTriplet(int [] array, int sum) {
 		
-		int x, y, z= 0;
+		int x, y;
 		for(int i=0; i<array.length; i++) {
 			int j=i+1;
 			x = array[i];
