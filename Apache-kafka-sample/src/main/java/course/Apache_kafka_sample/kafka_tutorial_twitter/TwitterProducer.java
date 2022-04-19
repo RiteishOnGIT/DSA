@@ -21,21 +21,16 @@ import com.twitter.hbc.httpclient.auth.OAuth1;
 
 public class TwitterProducer {
 
-	
 	Logger logger = LoggerFactory.getLogger(TwitterProducer.class.getName());
-	
+
 	public TwitterProducer() {
 	}
 
 	public static void main(String[] args) {
-		
 		new TwitterProducer().run();
-		
 	}
 
 	public void run() {
-		
-		
 		BlockingDeque<String> msgQueue = new LinkedBlockingDeque<String>(100);
 		Client client = createTwitterClient(msgQueue);
 		client.connect();
@@ -47,11 +42,11 @@ public class TwitterProducer {
 				e.printStackTrace();
 				client.stop();
 			}
-			
-			if(msg!=null) {
+
+			if (msg != null) {
 				logger.info(msg);
 			}
-			
+
 		}
 		logger.info("End of the application");
 	}
@@ -67,6 +62,7 @@ public class TwitterProducer {
 		 * Declare the host you want to connect to, the endpoint, and authentication
 		 * (basic auth or oauth)
 		 */
+
 		Hosts hosebirdHosts = new HttpHosts(Constants.STREAM_HOST);
 		StatusesFilterEndpoint hosebirdEndpoint = new StatusesFilterEndpoint();
 		// Optional: set up some followings and track terms
