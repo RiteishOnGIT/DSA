@@ -1,8 +1,6 @@
 package sorting;
 
 public class MergeFunction {
-
-	
 	public static int mergeTwoArrays(int [] array, int low, int mid, int high) {
 		int inversions = 0;
 		if(low == array.length-1)return 0;
