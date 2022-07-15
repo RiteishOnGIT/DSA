@@ -11,9 +11,9 @@ public class CoinChange {
 		
 		int result = coinChange(array, n-1, sum);
 		
-		if(sum >= array[n]) {
+		if(sum >= array[n-1]) {
 			
-			result = result + coinChange(array, n, sum-array[n]);
+			result = result + coinChange(array, n, sum-array[n-1]);
 			
 		}
 		
@@ -21,6 +21,8 @@ public class CoinChange {
 		
 		
 	}
+	
+	
 	
 	
 	
@@ -32,7 +34,7 @@ public class CoinChange {
 		
 		
 		int coins[] = {2, 5, 3, 6};
-		System.out.println(coinChange(coins, coins.length, 10));
+		System.out.println(coinChange(coins, coins.length, 5));
 		
 		
 	}
